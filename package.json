@@ -1,0 +1,23 @@
+{
+  "name": "proshop_mern",
+  "version": "1.0.0",
+  "description": "MERN Shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/judo2000/proShop_mern.git"
+  },
+  "author": "Stephen Moore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/judo2000/proShop_mern/issues"
+  },
+  "homepage": "https://github.com/judo2000/proShop_mern#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.18"
+  }
+}
