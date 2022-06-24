@@ -22,6 +22,7 @@
   "homepage": "https://github.com/judo2000/proShop_mern#readme",
   "dependencies": {
     "bootstrap": "^5.2.0-beta1",
+    "colors": "^1.4.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.4.0"
