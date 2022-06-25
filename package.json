@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/judo2000/proShop_mern#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.0-beta1",
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",
