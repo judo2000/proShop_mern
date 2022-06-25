@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import {
-//   productListReducer,
-//   productDetailsReducer,
-// } from './reducers/productReducers';
+import {
+  productListReducer,
+  //   productDetailsReducer,
+} from './reducers/productReducers';
 // import { cartReducer } from './reducers/cartReducers';
 // import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
 const reducer = {
-  // productList: productListReducer,
+  productList: productListReducer,
   // productDetails: productDetailsReducer,
   // cart: cartReducer,
   // userLogin: userLoginReducer,
