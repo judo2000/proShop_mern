@@ -16,7 +16,7 @@ const reducer = {
 
 // get cart Items from local storage
 const cartItemsFromStorage = localStorage.getItem('cartItems')
-  ? JSON.parse(localStorage.getItem('cartitems'))
+  ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
 
 // get userInfo from local storage
@@ -24,14 +24,14 @@ const cartItemsFromStorage = localStorage.getItem('cartItems')
 //   ? JSON.parse(localStorage.getItem('userInfo'))
 //   : null;
 
-const initialState = {
+const preloadedState = {
   cart: { cartItems: cartItemsFromStorage },
   // userLogin: { userInfo: userInfoFromStorage }
 };
 
 const store = configureStore({
   reducer,
-  initialState,
+  preloadedState,
   devTools: process.env.NODE_ENV !== 'production', //only show devTools when in production
 });
 
