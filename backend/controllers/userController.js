@@ -30,7 +30,10 @@ const authUser = asyncHandler(async (req, res) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
-
+  if (firstName || lastName || email || password === '') {
+    res.status(401);
+    throw new Error('All fields are required');
+  }
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -38,6 +41,15 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exists');
   }
 
+  if (firstName === '') {
+    res.status(401);
+    throw new Error('First name is required');
+  }
+
+  if (lastName === '') {
+    res.status(401);
+    throw new Error('Last name is required');
+  }
   const user = await User.create({
     firstName,
     lastName,
