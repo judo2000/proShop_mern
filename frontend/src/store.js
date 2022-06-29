@@ -4,8 +4,11 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
-// import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
+import {
+  userDetailsReducer,
+  userLoginReducer,
+  userRegisterReducer,
+} from './reducers/userReducers';
 
 const reducer = {
   productList: productListReducer,
@@ -13,6 +16,7 @@ const reducer = {
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
 };
 
 // get cart Items from local storage
