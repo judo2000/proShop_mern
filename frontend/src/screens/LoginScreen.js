@@ -20,10 +20,12 @@ const LoginScreen = ({ location }) => {
   const redirect = searchParams.get('redirect')
     ? searchParams.get('redirect')
     : '/';
-
+  console.log(redirect);
   const navigate = useNavigate();
   useEffect(() => {
-    if (userInfo) navigate(redirect);
+    if (userInfo) {
+      navigate(`/${redirect}`);
+    }
   }, [navigate, userInfo, redirect]);
 
   const submitHandler = async (e) => {
