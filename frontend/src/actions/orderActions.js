@@ -6,9 +6,9 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
-  ORDER_Pay_REQUEST,
-  ORDER_Pay_SUCCESS,
-  ORDER_Pay_FAIL,
+  ORDER_PAY_REQUEST,
+  ORDER_PAY_SUCCESS,
+  ORDER_PAY_FAIL,
 } from '../constants/orderConstants';
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -80,7 +80,7 @@ export const payOrder =
   (orderId, paymentResult) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: ORDER_Pay_REQUEST,
+        type: ORDER_PAY_REQUEST,
       });
 
       const {
@@ -100,12 +100,12 @@ export const payOrder =
       );
 
       dispatch({
-        type: ORDER_Pay_SUCCESS,
+        type: ORDER_PAY_SUCCESS,
         payload: data,
       });
     } catch (error) {
       dispatch({
-        type: ORDER_Pay_FAIL,
+        type: ORDER_PAY_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message
