@@ -30,10 +30,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
-  if (firstName || lastName || email || password === '') {
-    res.status(401);
-    throw new Error('All fields are required');
-  }
+
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -130,4 +127,24 @@ const getUsers = asyncHandler(async (req, res) => {
   res.json(users);
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers };
+// @desc   Delete a user
+// @route  DELETE /api/users/:id
+// @access Private/Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    await user.remove();
+    res.json({ message: 'User removed' });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
+export {
+  authUser,
+  getUserProfile,
+  registerUser,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+};
