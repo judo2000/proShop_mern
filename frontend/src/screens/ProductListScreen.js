@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProducts } from '../actions/productActions';
+import { deleteProduct, listProducts } from '../actions/productActions';
 import { useNavigate } from 'react-router-dom';
 
 const ProductListScreen = () => {
@@ -12,6 +12,13 @@ const ProductListScreen = () => {
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -24,11 +31,11 @@ const ProductListScreen = () => {
     } else {
       navigate('/login');
     }
-  }, [dispatch, userInfo, navigate]);
+  }, [dispatch, userInfo, navigate, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
-      // DELETE Products
+      dispatch(deleteProduct(id));
     }
   };
 
@@ -47,6 +54,8 @@ const ProductListScreen = () => {
           </button>
         </Col>
       </Row>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -60,15 +69,14 @@ const ProductListScreen = () => {
               <td>PRICE</td>
               <td>CATEGORY</td>
               <td>BRAND</td>
-              <td>Actions</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
                 <td>{product._id}</td>
-                <td>{product.firstName}</td>
-                <td>{product.lastName}</td>
+                <td>{product.name}</td>
                 <td>${product.price}</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
