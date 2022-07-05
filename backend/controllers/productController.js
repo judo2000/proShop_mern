@@ -40,7 +40,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @route  POST /api/products
 // @access Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
-  console.log('create product');
   const product = new Product({
     name: 'Sample name',
     price: 0,
@@ -64,7 +63,6 @@ const createProduct = asyncHandler(async (req, res) => {
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, price, description, image, brand, category, countInStock } =
     req.body;
-  console.log(name);
   const product = await Product.findById(req.params.id);
 
   if (product) {
